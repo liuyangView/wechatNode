@@ -216,7 +216,7 @@ WeChat.prototype.postSendMsg = function(req,res){
         console.log("body"+body); 
 
         this.getAccessToken().then(function(data){
-            console.log("body"+body); 
+            console.log("body22222"+body); 
             //格式化请求连接
             var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
             
