@@ -222,7 +222,7 @@ WeChat.prototype.postSendMsg = function(req,res){
     return new Promise(function(resolve,reject){
 
         var body = req.body;
-        console(body);
+        console.log("body"+body);
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
         
