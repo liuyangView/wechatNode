@@ -220,7 +220,7 @@ WeChat.prototype.postSendMsg = function(req,res){
             that.requestPost(url,req.body).then(function(data){
                 resolve(data);
             });
-            
+            resolve(data);
         });
     });
 
