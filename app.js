@@ -39,6 +39,9 @@ app.get('/sendMsg',function(req,res){
 });
 //用于发消息 POST
 app.post('/sendMsg1',function(req,res){
+
+
+    console.log("dd"+req.bodyParser+"dd"+req.body);
     if (!req.body) return res.sendStatus(400)
     res.send('welcome, ' + req.body.touser)
         //  wechatApp.postSendMsg(req,res).then(function(data){
