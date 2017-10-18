@@ -209,7 +209,7 @@ WeChat.prototype.getAccessToken = function(){
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     var body = req.body;
-    rthis.getAccessToken().then(function(data){
+    this.getAccessToken().then(function(data){
 
         console.log("body"+body); 
 
