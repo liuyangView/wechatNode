@@ -208,16 +208,19 @@ WeChat.prototype.getAccessToken = function(){
  */
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
+    var body = req.body;
+
     return new Promise(function(resolve,reject){
 
-        var body = req.body;
-        // console.log("body"+body); 
-        var that1 = that;
+        
+        console.log("body"+body); 
+
         this.getAccessToken().then(function(data){
+            console.log("body"+body); 
             //格式化请求连接
-            var url = util.format(that1.apiURL.sendMsgApi,that1.apiDomain,data);
+            var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
             
-            that1.requestPost(url,JSON.stringify(body)).then(function(data){
+            that.requestPost(url,JSON.stringify(body)).then(function(data){
                     resolve(data);
             });
         });
