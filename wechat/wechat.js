@@ -200,10 +200,10 @@ WeChat.prototype.postSendMsg = function(){
                    "name":{"value":"刘洋",
                    "color":"#173177"},
 
-                   "keyword2":{"state":"直播中",
+                   "state":{"value":"直播中",
                    "color":"#173177"},
 
-                   "keyword3":{"date":now.toLocaleString(),
+                   "date":{"value":now.toLocaleString(),
                    "color":"#173177"},
                    
                    "remark":{"value":"---YYBT",
