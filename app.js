@@ -31,7 +31,7 @@ app.get('/sendMsg',function(req,res){
         }); 
 });
 //用于发消息 POST
-app.post('/sendMsg',function(req,res){
+app.post('/sendMsg1',function(req,res){
     
          wechatApp.postSendMsg(req,res).then(function(data){
              res.send(data);
