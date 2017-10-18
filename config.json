@@ -1,0 +1,12 @@
+{
+    "token":"yybtsb",
+    "appID":"wxd8a6b33b2182b04a",
+    "appScrect":"8c923a32cc10357e3da6e4415487b4ab",
+    "encodingAESKey":"afPsLj0rV0yGBtZRyWpGWTGFgsrvI40XBCZrnwUURFk",
+    "apiDomain":"https://api.weixin.qq.com/",
+    "apiURL":{
+        "accessTokenApi":"%scgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
+        "createMenu":"%scgi-bin/menu/create?access_token=%s",
+        "sendMsgApi":"%scgi-bin/message/template/send?access_token=%s"
+    }
+}
