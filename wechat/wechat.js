@@ -108,17 +108,6 @@ var WeChat = function(config){
  */
 WeChat.prototype.auth = function(req,res){
 
-    var that = this;
-    this.getAccessToken().then(function(data){
-        //格式化请求连接
-        var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
-        //使用 Post 请求创建微信菜单
-        that.requestPost(url,JSON.stringify(menus)).then(function(data){
-            //讲结果打印
-            console.log(data);
-        });
-    });
-
         //1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
         var signature = req.query.signature,//微信加密签名
             timestamp = req.query.timestamp,//时间戳
@@ -222,17 +211,36 @@ WeChat.prototype.postSendMsg = function(req,res){
     return new Promise(function(resolve,reject){
 
         var body = req.body;
-        console.log("body"+body); 
-
-        //格式化请求地址
-        var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
-        
-        that.requestPost(url,JSON.stringify(body)).then(function(data){
-                resolve(data);
+        // console.log("body"+body); 
+        var that = this;
+        this.getAccessToken().then(function(data){
+            //格式化请求连接
+            var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
+            
+            that.requestPost(url,JSON.stringify(body)).then(function(data){
+                    resolve(data);
+            });
         });
+        //格式化请求地址
+   
 
     });
 }
+/**
+ * 创建菜单
+ */
+// WeChat.prototype.postSendMsg = function(req,res){
+//     var that = this;
+//     this.getAccessToken().then(function(data){
+//         //格式化请求连接
+//         var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
+//         //使用 Post 请求创建微信菜单
+//         that.requestPost(url,JSON.stringify(menus)).then(function(data){
+//             //讲结果打印
+//             console.log(data);
+//         });
+//     });
+// }
 /**
  * 微信消息处理
  * @param {Request} req Request 对象
