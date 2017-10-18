@@ -185,8 +185,6 @@ WeChat.prototype.postSendMsg = function(){
         var currentTime = new Date().getTime();
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
-        console.log(url);
-
         var now = new Date();
 
         var json = {"touser":"okwml0jhL-nYlWvj2R8Ni7SGgBMY",
@@ -209,18 +207,45 @@ WeChat.prototype.postSendMsg = function(){
                    "remark":{"value":"关注更多主播，了解更多信息\n---YYBT",
                    "color":"#173177"}
                 }};
-        console.log(json);
             that.requestPost(url,JSON.stringify(json)).then(function(data){
-                var result = JSON.parse(data); 
-                
-                console.log(data);
-                console.log(result);
                 resolve(data);
             });
   
     });
 }
 
+/**
+ * 发消息
+ */
+WeChat.prototype.postSendMsg = function(req,res){
+    var that = this;
+    return new Promise(function(resolve,reject){
+       
+    var buffer = [],that = this;
+        
+    //实例微信消息加解密
+    var cryptoGraphy = new CryptoGraphy(that.config,req);
+        
+    //监听 data 事件 用于接收数据
+    req.on('data',function(data){
+        buffer.push(data);
+    });
+    //监听 end 事件 用于处理接收完成的数据
+    req.on('end',function(){
+
+        var body = req.body;
+        //格式化请求地址
+        var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
+        
+        that.requestPost(url,JSON.stringify(body)).then(function(data){
+                resolve(data);
+        });
+
+    });
+       
+  
+    });
+}
 /**
  * 微信消息处理
  * @param {Request} req Request 对象

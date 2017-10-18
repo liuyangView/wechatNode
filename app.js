@@ -23,13 +23,20 @@ app.get('/getAccessToken',function(req,res){
     });    
 });
 
-//用于请求获取 access_token
+//用于发消息 GET
 app.get('/sendMsg',function(req,res){
    
         wechatApp.postSendMsg().then(function(data){
             res.send(data);
         }); 
 });
+//用于发消息 POST
+app.post('/sendMsg',function(req,res){
+    
+         wechatApp.postSendMsg(req,res).then(function(data){
+             res.send(data);
+         }); 
+ });
 
 //监听3000端口
 app.listen(80);
