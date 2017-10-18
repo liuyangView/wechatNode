@@ -206,7 +206,7 @@ WeChat.prototype.postSendMsg = function(){
                    "date":{"value":now.toLocaleString(),
                    "color":"#173177"},
                    
-                   "remark":{"value":"---YYBT",
+                   "remark":{"value":"关注更多主播，了解更多信息\n---YYBT",
                    "color":"#173177"}
                 }};
         console.log(json);
