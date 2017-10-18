@@ -186,21 +186,24 @@ WeChat.prototype.postSendMsg = function(){
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
         console.log(url);
+
+        var now = new Date();
+
         var json = {"touser":"okwml0jhL-nYlWvj2R8Ni7SGgBMY",
-               "template_id":"ykLgdZf6MUWkmJnPZKrlodrBStBB942_yY1_6bAphGQ",
+               "template_id":"Fa1_J9nK-bnI4g2-D5Ds5vYJvd2Jak7bMMvGJt10cYQ",
                "topcolor":"#FF0000",
                "url":"http://www.baidu.com",  
                "data":{
-                   "first":{"value":"恭喜你购买成功！",
+                   "first":{"value":"你好，你关注的主播更新状态了！",
                    "color":"#173177"},
 
-                   "keyword1":{"value":"成",
+                   "name":{"value":"刘洋",
                    "color":"#173177"},
 
-                   "keyword2":{"value":"功",
+                   "keyword2":{"state":"直播中",
                    "color":"#173177"},
 
-                   "keyword3":{"value":"了",
+                   "keyword3":{"date":now.toLocaleString(),
                    "color":"#173177"},
                    
                    "remark":{"value":"---YYBT",
