@@ -212,12 +212,12 @@ WeChat.prototype.postSendMsg = function(req,res){
     return new Promise(function(resolve,reject){
         this.getAccessToken().then(function(data){
             
-            console.log("body"+body); 
+            console.log("bodysb"+body); 
             
             //格式化请求地址
             var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
                     
-            that.requestPost(url,JSON.stringify(body)).then(function(data){
+            that.requestPost(url,req.body).then(function(data){
                 resolve(data);
             });
             
