@@ -209,18 +209,21 @@ WeChat.prototype.getAccessToken = function(){
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     var body = req.body;
-    this.getAccessToken().then(function(data){
-
-        console.log("body"+body); 
-
-        //格式化请求地址
-        var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
-        
-        that.requestPost(url,JSON.stringify(body)).then(function(data){
-                res.send(data);
+    return new Promise(function(resolve,reject){
+        this.getAccessToken().then(function(data){
+            
+            console.log("body"+body); 
+            
+            //格式化请求地址
+            var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
+                    
+            that.requestPost(url,JSON.stringify(body)).then(function(data){
+                resolve(data);
+            });
+            
         });
-
     });
+
 }
 /**
  * 创建菜单
