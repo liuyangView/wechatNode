@@ -216,11 +216,11 @@ WeChat.prototype.postSendMsg = function(req,res){
             
             //格式化请求地址
             var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
-                    
-            
-            resolve(that.requestPost(url,req.body).then(function(data){
+            console.log("url:"+url);         
+            that.requestPost(url,req.body).then(function(data){
                 resolve(data);
-            }));
+            });
+            // resolve(data);
         });
     });
 
