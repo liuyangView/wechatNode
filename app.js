@@ -1,8 +1,15 @@
 const express = require('express'), //express 框架 
       wechat  = require('./wechat/wechat'), 
        config = require('./config');//引入配置文件
-       
+       bodyParser = require('body-parser')
+
 var app = express();//实例express框架
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var wechatApp = new wechat(config); //实例wechat 模块
 
@@ -32,11 +39,11 @@ app.get('/sendMsg',function(req,res){
 });
 //用于发消息 POST
 app.post('/sendMsg1',function(req,res){
-    console.log("ddd"+req);
-    // res.send("iiiii");
-         wechatApp.postSendMsg(req,res).then(function(data){
-             res.send(data);
-         }); 
+    if (!req.body) return res.sendStatus(400)
+    res.send('welcome, ' + req.body.touser)
+        //  wechatApp.postSendMsg(req,res).then(function(data){
+        //      res.send(data);
+        //  }); 
  });
 
 //监听3000端口
