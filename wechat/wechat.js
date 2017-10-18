@@ -209,41 +209,34 @@ WeChat.prototype.getAccessToken = function(){
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     var body = req.body;
+    rthis.getAccessToken().then(function(data){
 
-    return new Promise(function(resolve,reject){
-
-        
         console.log("body"+body); 
 
-        this.getAccessToken().then(function(data){
-            console.log("body22222"+body); 
-            //格式化请求连接
-            var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
-            
-            that.requestPost(url,JSON.stringify(body)).then(function(data){
-                    resolve(data);
-            });
-        });
         //格式化请求地址
-   
+        var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
+        
+        that.requestPost(url,JSON.stringify(body)).then(function(data){
+                res.send(data);
+        });
 
     });
 }
 /**
  * 创建菜单
  */
-// WeChat.prototype.postSendMsg = function(req,res){
-//     var that = this;
-//     this.getAccessToken().then(function(data){
-//         //格式化请求连接
-//         var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
-//         //使用 Post 请求创建微信菜单
-//         that.requestPost(url,JSON.stringify(menus)).then(function(data){
-//             //讲结果打印
-//             console.log(data);
-//         });
-//     });
-// }
+WeChat.prototype.createMenus = function(req,res){
+    var that = this;
+    this.getAccessToken().then(function(data){
+        //格式化请求连接
+        var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
+        //使用 Post 请求创建微信菜单
+        that.requestPost(url,JSON.stringify(menus)).then(function(data){
+            //讲结果打印
+            console.log(data);
+        });
+    });
+}
 /**
  * 微信消息处理
  * @param {Request} req Request 对象
