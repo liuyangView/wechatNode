@@ -24,7 +24,7 @@ app.get('/getAccessToken',function(req,res){
 });
 
 //用于请求获取 access_token
-app.get('/test',function(req,res){
+app.get('/sendMsg',function(req,res){
    
         wechatApp.postSendMsg().then(function(data){
             res.send(data);
