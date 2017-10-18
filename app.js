@@ -32,10 +32,10 @@ app.get('/sendMsg',function(req,res){
 });
 //用于发消息 POST
 app.post('/sendMsg1',function(req,res){
-    
-         wechatApp.postSendMsg(req,res).then(function(data){
-             res.send(data);
-         }); 
+    console("ddd"+req);
+        //  wechatApp.postSendMsg(req,res).then(function(data){
+        //      res.send(data);
+        //  }); 
  });
 
 //监听3000端口
