@@ -210,7 +210,7 @@ WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     var body = req.body;
     return new Promise(function(resolve,reject){
-        this.getAccessToken().then(function(data){
+        that.getAccessToken().then(function(data){
             
             console.log("bodysb"+body); 
             
