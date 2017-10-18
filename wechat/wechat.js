@@ -212,12 +212,12 @@ WeChat.prototype.postSendMsg = function(req,res){
 
         var body = req.body;
         // console.log("body"+body); 
-        var that = this;
+        var that1 = that;
         this.getAccessToken().then(function(data){
             //格式化请求连接
-            var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
+            var url = util.format(that1.apiURL.sendMsgApi,that1.apiDomain,data);
             
-            that.requestPost(url,JSON.stringify(body)).then(function(data){
+            that1.requestPost(url,JSON.stringify(body)).then(function(data){
                     resolve(data);
             });
         });
