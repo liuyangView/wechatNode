@@ -220,8 +220,9 @@ WeChat.prototype.getAccessToken = function(){
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     return new Promise(function(resolve,reject){
-        
+
         var body = req.body;
+        console(body);
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
         
