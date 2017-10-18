@@ -220,19 +220,7 @@ WeChat.prototype.getAccessToken = function(){
 WeChat.prototype.postSendMsg = function(req,res){
     var that = this;
     return new Promise(function(resolve,reject){
-       
-    var buffer = [],that = this;
         
-    //实例微信消息加解密
-    var cryptoGraphy = new CryptoGraphy(that.config,req);
-        
-    //监听 data 事件 用于接收数据
-    req.on('data',function(data){
-        buffer.push(data);
-    });
-    //监听 end 事件 用于处理接收完成的数据
-    req.on('end',function(){
-
         var body = req.body;
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
@@ -241,9 +229,6 @@ WeChat.prototype.postSendMsg = function(req,res){
                 resolve(data);
         });
 
-    });
-       
-  
     });
 }
 /**
