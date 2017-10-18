@@ -32,7 +32,7 @@ app.get('/sendMsg',function(req,res){
 });
 //用于发消息 POST
 app.post('/sendMsg1',function(req,res){
-    console("ddd"+req);
+    console.log("ddd"+req);
         //  wechatApp.postSendMsg(req,res).then(function(data){
         //      res.send(data);
         //  }); 
