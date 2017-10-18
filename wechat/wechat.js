@@ -222,21 +222,7 @@ WeChat.prototype.postSendMsg = function(req,res){
     return new Promise(function(resolve,reject){
 
         var body = req.body;
-        console.log("body"+JSON.stringify(req));
-
-        console.log(req.method);
-        console.log(req.baseUrl);
-        console.log(req.path);
-        conlose.log(req.headers['user-agent']);
-        //获取请求头
-        console.log(req.get('user-agent'));
-        //获取url查询参数
-        console.log(req.query);
-        //获取url查询参数id值
-        console.log(req.query.id);
-        //post请求时获取body的参数值
-        console.log(req.body);
-        console.log(req.body.name);   
+        console.log("body"+body); 
 
         //格式化请求地址
         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
