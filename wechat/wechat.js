@@ -178,41 +178,41 @@ WeChat.prototype.getAccessToken = function(){
 /**
  * 发消息
  */
-WeChat.prototype.postSendMsg = function(){
-    var that = this;
-    return new Promise(function(resolve,reject){
-        //获取当前时间 
-        var currentTime = new Date().getTime();
-        //格式化请求地址
-        var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
-        var now = new Date();
+// WeChat.prototype.postSendMsg = function(){
+//     var that = this;
+//     return new Promise(function(resolve,reject){
+//         //获取当前时间 
+//         var currentTime = new Date().getTime();
+//         //格式化请求地址
+//         var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,accessTokenJson.access_token);
+//         var now = new Date();
 
-        var json = {"touser":"okwml0jhL-nYlWvj2R8Ni7SGgBMY",
-               "template_id":"Fa1_J9nK-bnI4g2-D5Ds5vYJvd2Jak7bMMvGJt10cYQ",
-               "topcolor":"#FF0000",
-               "url":"http://www.baidu.com",  
-               "data":{
-                   "first":{"value":"你好，你关注的主播更新状态了！",
-                   "color":"#173177"},
+//         var json = {"touser":"okwml0jhL-nYlWvj2R8Ni7SGgBMY",
+//                "template_id":"Fa1_J9nK-bnI4g2-D5Ds5vYJvd2Jak7bMMvGJt10cYQ",
+//                "topcolor":"#FF0000",
+//                "url":"http://www.baidu.com",  
+//                "data":{
+//                    "first":{"value":"你好，你关注的主播更新状态了！",
+//                    "color":"#173177"},
 
-                   "name":{"value":"刘洋",
-                   "color":"#173177"},
+//                    "name":{"value":"刘洋",
+//                    "color":"#173177"},
 
-                   "state":{"value":"直播中",
-                   "color":"#173177"},
+//                    "state":{"value":"直播中",
+//                    "color":"#173177"},
 
-                   "date":{"value":now.toLocaleString(),
-                   "color":"#173177"},
+//                    "date":{"value":now.toLocaleString(),
+//                    "color":"#173177"},
                    
-                   "remark":{"value":"关注更多主播，了解更多信息\n---YYBT",
-                   "color":"#173177"}
-                }};
-            that.requestPost(url,JSON.stringify(json)).then(function(data){
-                resolve(data);
-            });
+//                    "remark":{"value":"关注更多主播，了解更多信息\n---YYBT",
+//                    "color":"#173177"}
+//                 }};
+//             that.requestPost(url,JSON.stringify(json)).then(function(data){
+//                 resolve(data);
+//             });
   
-    });
-}
+//     });
+// }
 
 /**
  * 发消息
