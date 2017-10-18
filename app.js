@@ -34,13 +34,6 @@ app.get('/getAccessToken',function(req,res){
     });    
 });
 
-//用于发消息 GET
-app.get('/sendMsg',function(req,res){
-   
-        wechatApp.postSendMsg().then(function(data){
-            res.send(data);
-        }); 
-});
 //用于发消息 POST
 app.post('/sendMsg',function(req,res){
 
