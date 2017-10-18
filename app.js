@@ -33,6 +33,7 @@ app.get('/sendMsg',function(req,res){
 //用于发消息 POST
 app.post('/sendMsg1',function(req,res){
     console.log("ddd"+req);
+    res.send("iiiii");
         //  wechatApp.postSendMsg(req,res).then(function(data){
         //      res.send(data);
         //  }); 
