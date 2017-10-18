@@ -218,7 +218,7 @@ WeChat.prototype.postSendMsg = function(req,res){
             var url = util.format(that.apiURL.sendMsgApi,that.apiDomain,data);
             console.log("url:"+url);         
             that.requestPost(url,JSON.stringify(body)).then(function(data){
-                // resolve(data);
+                resolve(data);
                 console.log("data:"+data);  
             });
             // resolve(data);
