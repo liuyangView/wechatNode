@@ -229,17 +229,20 @@ WeChat.prototype.postSendMsg = function(req,res){
 /**
  * 创建菜单
  */
-WeChat.prototype.createMenus = function(req,res){
+WeChat.prototype.createMenus = function(){
     var that = this;
-    this.getAccessToken().then(function(data){
-        //格式化请求连接
-        var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
-        //使用 Post 请求创建微信菜单
-        that.requestPost(url,JSON.stringify(menus)).then(function(data){
-            //讲结果打印
-            console.log(data);
+    return new Promise(function(resolve,reject){
+        that.getAccessToken().then(function(data){
+            //格式化请求连接
+            var url = util.format(that.apiURL.createMenu,that.apiDomain,data);
+            //使用 Post 请求创建微信菜单
+            that.requestPost(url,JSON.stringify(menus)).then(function(data){
+                //讲结果打印
+                resolve(data);
+            });
         });
     });
+    
 }
 /**
  * 微信消息处理
